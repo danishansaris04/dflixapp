@@ -195,6 +195,18 @@
             <div id="movie-status" class="status-msg"></div>
         </div>
 
+
+  <div class="app-stack">
+        <div class="card">
+            <div class="card-title">🎬 DFLIX TV Supported</div>
+            <p class="card-desc">Unlimited movies and series..</p>
+            <button class="dl-btn movie-btn" onclick="startDL('movie', 'https://dflixapp.netlify.app/DFlixTVSupported.apk')">Get Movie App</button>
+            <div id="movie-loader" class="loader-bar"><div id="movie-fill" class="fill"></div></div>
+            <div id="movie-status" class="status-msg"></div>
+        </div>
+
+
+
         <div class="connector">✦</div>
 
         <div class="card" id="player-card">
@@ -243,7 +255,7 @@
                     // Alert and Pulse Player Card
                     document.getElementById('player-card').classList.add('pulse-active');
                     setTimeout(() => {
-                        alert("Bhai, Movie App ke sath Player install karna zaroori hai, tabhi movie chalegi!");
+                        alert(" Movie App ke sath Player install karna zaroori hai, tabhi movie chalegi!");
                     }, 1000);
                 }
             } else {
