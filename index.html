@@ -1,260 +1,601 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="monetag" content="59a4015670e9dcfa2e7746f95fe66ec1">
-    
-    <title>DFLIX - Premium Streaming</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #00f2ff;
-            --accent: #7000ff;
-            --glass: rgba(255, 255, 255, 0.07);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="monetag" content="59a4015670e9dcfa2e7746f95fe66ec1">
 
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  <title>DFLIX | Official Downloads</title>
+  <meta name="description" content="Download DFLIX for Android, Android TV and Windows PC.">
 
-        body {
-            background: #050505;
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            display: flex;
-            justify-content: center;
-            min-height: 100vh;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-        .bg-pattern {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(var(--glass) 1px, transparent 1px);
-            background-size: 30px 30px;
-            z-index: -1;
-        }
+  <style>
+    :root {
+      --bg: #08090d;
+      --panel: #11131a;
+      --text: #f7f7fb;
+      --muted: #9295a5;
+      --red: #ff2548;
+      --border: rgba(255,255,255,.09);
+    }
 
-        .container {
-            padding: 40px 20px;
-            width: 100%;
-            max-width: 450px;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-top: 20px;
-        }
+    html { scroll-behavior: smooth; }
 
-        .brand {
-            font-size: 3rem;
-            font-weight: 900;
-            letter-spacing: -2px;
-            background: linear-gradient(to right, #fff, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.3));
-        }
+    body {
+      background:
+        radial-gradient(ellipse at 50% -15%, rgba(255,37,72,.19), transparent 45%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, Arial, sans-serif;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
 
-        .hero-desc {
-            color: #888;
-            font-size: 1rem;
-            margin-top: 8px;
-            font-weight: 400;
-        }
+    a { color: inherit; text-decoration: none; }
 
-        .app-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+    .navbar {
+      width: 100%;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,9,13,.8);
+      backdrop-filter: blur(16px);
+    }
 
-        .card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 30px;
-            padding: 25px;
-            backdrop-filter: blur(20px);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
+    .nav-inner {
+      max-width: 1180px;
+      margin: auto;
+      padding: 19px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-        /* Highlight effect for Player */
-        .card-highlight {
-            border-color: var(--accent);
-            box-shadow: 0 0 30px rgba(112, 0, 255, 0.15);
-        }
+    .logo {
+      font-size: 1.75rem;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+    }
 
-        .card-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    .logo span { color: var(--red); }
 
-        .card-desc {
-            font-size: 0.85rem;
-            color: #aaa;
-            margin-bottom: 20px;
-        }
+    .nav-label {
+      color: #b5b7c4;
+      font-size: .82rem;
+      font-weight: 600;
+    }
 
-        .dl-btn {
-            width: 100%;
-            padding: 18px;
-            border-radius: 20px;
-            border: none;
-            font-weight: 800;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+    .hero {
+      max-width: 950px;
+      padding: 80px 22px 52px;
+      margin: auto;
+      text-align: center;
+    }
 
-        .movie-btn {
-            background: #fff;
-            color: #000;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border: 1px solid rgba(255,37,72,.3);
+      background: rgba(255,37,72,.08);
+      border-radius: 30px;
+      color: #ff8194;
+      font-size: .73rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
 
-        .player-btn {
-            background: var(--glass);
-            color: #fff;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
+    .dot {
+      height: 7px;
+      width: 7px;
+      background: var(--red);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--red);
+    }
 
-        .connector {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #333;
-            margin: -5px 0;
-        }
+    h1 {
+      font-size: clamp(2.8rem, 8vw, 5.3rem);
+      line-height: 1.05;
+      letter-spacing: -4px;
+      font-weight: 900;
+      margin: 25px 0 18px;
+    }
 
-        /* Animated Progress Bar */
-        .loader-bar {
-            height: 6px;
-            background: rgba(255,255,255,0.05);
-            margin-top: 20px;
-            border-radius: 10px;
-            display: none;
-            overflow: hidden;
-        }
+    h1 span {
+      background: linear-gradient(100deg, #ff294c, #ff7a90);
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
 
-        .fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            box-shadow: 0 0 15px var(--primary);
-            transition: width 0.1s linear;
-        }
+    .hero p {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 550px;
+      margin: auto;
+    }
 
-        .status-msg {
-            font-size: 0.75rem;
-            margin-top: 10px;
-            color: var(--primary);
-            text-align: center;
-            font-weight: 600;
-            display: none;
-        }
+    .platforms {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 27px;
+    }
 
-        .trust-row {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
-            opacity: 0.4;
-            font-size: 0.75rem;
-            font-weight: 700;
-        }
+    .platform {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.035);
+      padding: 8px 13px;
+      border-radius: 10px;
+      color: #d3d4de;
+      font-size: .78rem;
+      font-weight: 600;
+    }
 
-        /* Pulse animation for Player App */
-        @keyframes pulse {
-            0% { transform: scale(1); border-color: var(--accent); }
-            50% { transform: scale(1.02); border-color: var(--primary); }
-            100% { transform: scale(1); border-color: var(--accent); }
-        }
-        .pulse-active { animation: pulse 2s infinite ease-in-out; }
+    .section {
+      max-width: 1180px;
+      padding: 12px 24px 75px;
+      margin: auto;
+    }
 
-    </style>
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .section-heading h2 {
+      font-size: 1.55rem;
+      letter-spacing: -.7px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: .84rem;
+      margin-top: 4px;
+    }
+
+    .section-tag {
+      color: #a7a9b7;
+      font-size: .76rem;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 7px 10px;
+      white-space: nowrap;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      padding: 27px;
+      background: linear-gradient(145deg, #171922, #0f1016);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      transition: transform .25s, border-color .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,37,72,.45);
+    }
+
+    .card.featured {
+      border-color: rgba(255,37,72,.32);
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(255,37,72,.12), transparent 55%),
+        linear-gradient(145deg, #171922, #0f1016);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .app-icon {
+      width: 59px;
+      height: 59px;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      font-size: 1.8rem;
+      background: linear-gradient(145deg, #ff3455, #8e102a);
+      box-shadow: 0 8px 25px rgba(255,37,72,.17);
+    }
+
+    .pc-icon {
+      background: linear-gradient(145deg, #31394e, #171b29);
+      box-shadow: none;
+    }
+
+    .badge {
+      font-size: .68rem;
+      font-weight: 800;
+      color: #ff8396;
+      background: rgba(255,37,72,.1);
+      border: 1px solid rgba(255,37,72,.2);
+      border-radius: 8px;
+      padding: 6px 9px;
+    }
+
+    .badge.neutral {
+      color: #bfc6da;
+      background: rgba(150,165,200,.08);
+      border-color: rgba(150,165,200,.17);
+    }
+
+    .card h3 {
+      font-size: 1.35rem;
+      letter-spacing: -.5px;
+      margin-bottom: 6px;
+    }
+
+    .description {
+      color: var(--muted);
+      font-size: .85rem;
+      min-height: 43px;
+    }
+
+    .details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 19px 0 22px;
+    }
+
+    .detail {
+      padding: 6px 9px;
+      border-radius: 7px;
+      border: 1px solid var(--border);
+      font-size: .7rem;
+      color: #bfc0cc;
+    }
+
+    .download-btn {
+      width: 100%;
+      min-height: 51px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      background: var(--red);
+      color: white;
+      font: inherit;
+      font-size: .87rem;
+      font-weight: 800;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .download-btn:hover {
+      background: #e8173b;
+      box-shadow: 0 8px 24px rgba(255,37,72,.2);
+    }
+
+    .download-btn.secondary {
+      background: rgba(255,255,255,.045);
+      border-color: rgba(255,255,255,.12);
+    }
+
+    .download-btn.secondary:hover {
+      background: rgba(255,255,255,.1);
+      box-shadow: none;
+    }
+
+    .download-btn svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .notice {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 24px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(255,255,255,.025);
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .notice strong { color: #e6e7ef; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 27px 20px;
+      color: #777b8b;
+      font-size: .78rem;
+    }
+
+    footer .footer-logo {
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    footer .footer-logo span { color: var(--red); }
+
+    @media (min-width: 900px) {
+      .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .card { padding: 23px 20px; }
+      .card h3 { font-size: 1.22rem; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner { padding: 16px 19px; }
+      .logo { font-size: 1.5rem; }
+      .hero { padding: 65px 20px 42px; }
+      h1 { letter-spacing: -2.5px; }
+      .section { padding: 10px 17px 55px; }
+      .section-heading { align-items: flex-start; }
+      .section-heading h2 { font-size: 1.3rem; }
+      .section-tag { display: none; }
+      .grid { grid-template-columns: 1fr; gap: 14px; }
+      .card { padding: 23px; }
+      .description { min-height: auto; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="bg-pattern"></div>
-
-<div class="container">
-    <header>
-        <div class="brand">DFLIX</div>
-        <p class="hero-desc">Watch & Download in Ultra HD</p>
-    </header>
-
-
-    <div class="app-stack">
-        <div class="card">
-            <div class="card-title">🎬 DFLIX Movie</div>
-            <p class="card-desc">Unlimited movies and series..</p>
-            <button class="dl-btn movie-btn" onclick="startDL('movie', 'https://dflixapp.vercel.app/D-FLIX.apk')">Get Movie App</button>
-            <div id="movie-loader" class="loader-bar"><div id="movie-fill" class="fill"></div></div>
-            <div id="movie-status" class="status-msg"></div>
-        </div>
-<div class="app-stack">
-        <div class="card">
-            <div class="card-title">🎬 DFLIX TV</div>
-            <p class="card-desc">Unlimited movies and series..</p>
-            <button class="dl-btn movie-btn" onclick="startDL('movie', 'https://dflixapp.vercel.app/D-FLIX TV.apk')">Get Movie App</button>
-            <div id="movie-loader" class="loader-bar"><div id="movie-fill" class="fill"></div></div>
-            <div id="movie-status" class="status-msg"></div>
-        </div>
-
-    <div class="trust-row">
-        <span>VIRUS FREE</span>
-        <span>•</span>
-        <span>4K SUPPORT</span>
-        <span>•</span>
-        <span>SECURE</span>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo" aria-label="DFLIX home">D<span>FLIX</span></a>
+      <div class="nav-label">OFFICIAL DOWNLOAD CENTER</div>
     </div>
-</div>
+  </nav>
 
-<script>
-    function startDL(type, url) {
-        const btn = event.target;
-        const loader = document.getElementById(type + '-loader');
-        const fill = document.getElementById(type + '-fill');
-        const status = document.getElementById(type + '-status');
-        
-        // UI Interaction
-        btn.disabled = true;
-        btn.style.opacity = '0.4';
-        btn.innerText = "Securing Link...";
-        loader.style.display = 'block';
-        status.style.display = 'block';
+  <main>
+    <section class="hero">
+      <div class="eyebrow">
+        <span class="dot"></span>
+        YOUR ENTERTAINMENT HUB
+      </div>
 
-        let w = 0;
-        const interval = setInterval(() => {
-            if(w >= 100) {
-                clearInterval(interval);
-                btn.innerText = "Started!";
-                status.innerText = "Download beginning now...";
-                
-                // Real Download Trigger
-                window.location.href = url;
+      <h1>Meet Your Next<br><span>DFLIX Experience.</span></h1>
 
-                if(type === 'movie') {
-                    // Alert and Pulse Player Card
-                    document.getElementById('player-card').classList.add('pulse-active');
-                    setTimeout(() => {
-                        alert(" Movie App ke sath Player install karna zaroori hai, tabhi movie chalegi!");
-                    }, 1000);
-                }
-            } else {
-                w += 2;
-                fill.style.width = w + '%';
-                if(w == 40) status.innerText = "Optimizing for mobile...";
-                if(w == 80) status.innerText = "Ready to download...";
-            }
-        }, 30); // Fast animation for smooth feel
-    }
-</script>
-<script>(function(s){s.dataset.zone='11370411',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+      <p>
+        Choose your device, download the right version
+        and enjoy the DFLIX experience on your screen.
+      </p>
+
+      <div class="platforms">
+        <span class="platform">Android</span>
+        <span class="platform">Android TV</span>
+        <span class="platform">Windows 32-bit</span>
+        <span class="platform">Windows 64-bit</span>
+      </div>
+    </section>
+
+    <section class="section" id="downloads">
+      <div class="section-heading">
+        <div>
+          <h2>Choose Your Version</h2>
+          <p>Select the app made for your device.</p>
+        </div>
+        <div class="section-tag">4 DOWNLOAD OPTIONS</div>
+      </div>
+
+      <div class="grid">
+
+        <!-- ANDROID MOVIE APP -->
+        <article class="card featured">
+          <div class="card-top">
+            <div class="app-icon">▶</div>
+            <span class="badge">ANDROID</span>
+          </div>
+
+          <h3>DFLIX Movie</h3>
+          <p class="description">
+            The DFLIX movie app for compatible Android devices.
+          </p>
+
+          <div class="details">
+            <span class="detail">APK</span>
+            <span class="detail">Android</span>
+            <span class="detail">Mobile</span>
+          </div>
+
+          <a class="download-btn"
+             href="https://dflixapp.vercel.app/D-FLIX.apk"
+             data-download>
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <path d="m7 10 5 5 5-5"/>
+              <path d="M12 15V3"/>
+            </svg>
+            Download Movie App
+          </a>
+        </article>
+
+        <!-- ANDROID TV APP -->
+        <article class="card">
+          <div class="card-top">
+            <div class="app-icon">▣</div>
+            <span class="badge">ANDROID TV</span>
+          </div>
+
+          <h3>DFLIX TV</h3>
+          <p class="description">
+            The TV version for compatible Android TV devices.
+          </p>
+
+          <div class="details">
+            <span class="detail">APK</span>
+            <span class="detail">Android TV</span>
+            <span class="detail">Big Screen</span>
+          </div>
+
+          <a class="download-btn secondary"
+             href="https://dflixapp.vercel.app/D-FLIX%20TV.apk"
+             data-download>
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <path d="m7 10 5 5 5-5"/>
+              <path d="M12 15V3"/>
+            </svg>
+            Download TV App
+          </a>
+        </article>
+
+        <!-- WINDOWS 32-BIT -->
+        <article class="card">
+          <div class="card-top">
+            <div class="app-icon pc-icon">▤</div>
+            <span class="badge neutral">x86</span>
+          </div>
+
+          <h3>DFLIX for PC</h3>
+          <p class="description">
+            Windows 32-bit version for compatible PCs and laptops.
+          </p>
+
+          <div class="details">
+            <span class="detail">Windows</span>
+            <span class="detail">32-bit</span>
+            <span class="detail">x86</span>
+          </div>
+
+          <a class="download-btn secondary"
+             href="https://drive.google.com/file/d/1HyOyGwePAl9LEltMYZQmnWE2cL2wqabC/view?usp=drivesdk"
+             data-download>
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <path d="m7 10 5 5 5-5"/>
+              <path d="M12 15V3"/>
+            </svg>
+            Download 32-bit
+          </a>
+        </article>
+
+        <!-- WINDOWS 64-BIT -->
+        <article class="card featured">
+          <div class="card-top">
+            <div class="app-icon pc-icon">▤</div>
+            <span class="badge">x64</span>
+          </div>
+
+          <h3>DFLIX for PC</h3>
+          <p class="description">
+            Windows 64-bit version for compatible PCs and laptops.
+          </p>
+
+          <div class="details">
+            <span class="detail">Windows</span>
+            <span class="detail">64-bit</span>
+            <span class="detail">x64</span>
+          </div>
+
+          <a class="download-btn"
+             href="https://drive.google.com/file/d/17EHWMLS5rJyvHmozM52Fo9ZKQapA0YfV/view?usp=drivesdk"
+             data-download>
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <path d="m7 10 5 5 5-5"/>
+              <path d="M12 15V3"/>
+            </svg>
+            Download 64-bit
+          </a>
+        </article>
+
+      </div>
+
+      <div class="notice">
+        <span aria-hidden="true">ⓘ</span>
+        <div>
+          <strong>Before you download</strong><br>
+          Choose the version that matches your device.
+          Windows installers must be uploaded to the linked addresses
+          before the PC download buttons can work. Only install apps
+          from sources you trust.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">D<span>FLIX</span></div>
+    <p>Your entertainment, your screen.</p>
+    <p style="margin-top:8px">© <span id="year"></span> DFLIX. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Show a simple status while the browser opens the download URL.
+    // This does not simulate download progress.
+    document.querySelectorAll("[data-download]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        const original = link.innerHTML;
+        link.style.opacity = "0.75";
+
+        setTimeout(function () {
+          link.innerHTML = original;
+          link.style.opacity = "";
+        }, 1500);
+      });
+    });
+  </script>
+
+  <!-- Monetag integration -->
+  <script>
+    (function (s) {
+      s.dataset.zone = "11370411";
+      s.src = "https://n6wxm.com/vignette.min.js";
+    })(
+      [document.documentElement, document.body]
+        .filter(Boolean)
+        .pop()
+        .appendChild(document.createElement("script"))
+    );
+  </script>
+
 </body>
 </html>
