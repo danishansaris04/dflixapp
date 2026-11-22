@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +7,7 @@
 
 <title>DFLIX — Blue Edition</title>
 <meta name="theme-color" content="#080d1b">
-<meta name="description" content="Download DFLIX for Android, Android TV and Windows PC.">
+<meta name="description" content="Download DFLIX for Android, Android TV, Windows PC and macOS.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -165,6 +164,10 @@ button,a {-webkit-tap-highlight-color:transparent}
   background:linear-gradient(145deg,#213b65,#15223d);
   border:1px solid rgba(93,171,255,.2);
 }
+.app-icon.mac {
+  background:linear-gradient(145deg,#1b2c4b,#0f192e);
+  border:1px solid rgba(145,164,196,.25);
+}
 .badge {
   color:var(--cyan);background:rgba(66,220,255,.07);
   border:1px solid rgba(66,220,255,.2);
@@ -174,6 +177,10 @@ button,a {-webkit-tap-highlight-color:transparent}
 .badge.blue {
   color:#a8caff;background:rgba(22,135,255,.1);
   border-color:rgba(22,135,255,.25);
+}
+.badge.soon {
+  color:#ffd166;background:rgba(255,209,102,.08);
+  border-color:rgba(255,209,102,.25);
 }
 .card h3 {font-size:1.3rem;letter-spacing:-.5px;margin-bottom:6px}
 .description {color:var(--muted);font-size:.84rem;min-height:44px}
@@ -199,6 +206,13 @@ button,a {-webkit-tap-highlight-color:transparent}
   border-color:rgba(92,159,255,.24);
 }
 .download-btn.secondary:hover {background:rgba(24,95,170,.4)}
+.download-btn.disabled {
+  background:rgba(255,255,255,.03);
+  border-color:rgba(145,164,196,.18);
+  color:#7f93b5;
+  cursor:not-allowed;
+  pointer-events:none;
+}
 .download-btn svg {width:18px;height:18px;flex-shrink:0}
 
 .notice {
@@ -274,8 +288,8 @@ button,a {-webkit-tap-highlight-color:transparent}
     <div class="platforms">
       <span class="platform">✦ Android</span>
       <span class="platform">▣ Android TV</span>
-      <span class="platform">▤ Windows x86</span>
-      <span class="platform">▤ Windows x64</span>
+      <span class="platform">▤ Windows PC</span>
+      <span class="platform"> macOS (Soon)</span>
     </div>
 
     <div class="hero-line"></div>
@@ -340,11 +354,11 @@ button,a {-webkit-tap-highlight-color:transparent}
         </a>
       </article>
 
-      <!-- Windows 32-bit -->
+      <!-- Windows PC -->
       <article class="card">
         <div class="card-top">
           <div class="app-icon pc">▤</div>
-          <span class="badge blue">x86</span>
+          <span class="badge blue">WINDOWS</span>
         </div>
         <h3>DFLIX for PC</h3>
         <p class="description">Windows edition for compatible computers.</p>
@@ -360,11 +374,32 @@ button,a {-webkit-tap-highlight-color:transparent}
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
             <path d="m7 10 5 5 5-5M12 15V3"/>
           </svg>
-          Download 
+          Download PC App
         </a>
       </article>
 
-    
+      <!-- macOS Coming Soon -->
+      <article class="card">
+        <div class="card-top">
+          <div class="app-icon mac"></div>
+          <span class="badge soon">COMING SOON</span>
+        </div>
+        <h3>DFLIX for Mac</h3>
+        <p class="description">Native macOS version for MacBook and iMac is currently in development.</p>
+        <div class="details">
+          <span class="detail">macOS</span>
+          <span class="detail">Apple Silicon</span>
+          <span class="detail">Intel</span>
+        </div>
+        <button class="download-btn disabled" type="button" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          Coming Soon
+        </button>
+      </article>
+
     </div>
 
     <div class="notice">
@@ -386,8 +421,6 @@ button,a {-webkit-tap-highlight-color:transparent}
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // Preserve normal link navigation and downloads.
-  // No fake progress animation.
   document.querySelectorAll("[data-download]").forEach(function(link) {
     link.addEventListener("click", function() {
       link.style.filter = "brightness(1.2)";
